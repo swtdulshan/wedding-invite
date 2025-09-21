@@ -2,85 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Wedding Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're Invited! | Wedding of Bride & Groom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --theme-color-1: #c59d5f; /* Gold */
+      --text-color-1: #5d5d5d;
+      --bg-color-1: #fdfaf6;
+      --theme-color-2: #5a7d7c; /* Teal */
+      --text-color-2: #3e4c4c;
+      --bg-color-2: #f0f7f7;
+    }
+
     body {
-      font-family: 'Georgia', serif;
+      font-family: 'Lato', sans-serif;
       text-align: center;
-      background: #fff0f5;
-      color: #333;
+      background-color: var(--bg-color-1);
+      /* Subtle background pattern */
+      background-image: url('https://www.transparenttextures.com/patterns/subtle-white-feathers.png');
+      color: var(--text-color-1);
       margin: 0;
-      padding: 0;
+      padding: 20px;
+      transition: background-color 0.5s ease;
     }
+
     .card {
-      max-width: 700px;
+      max-width: 650px;
       margin: 40px auto;
-      padding: 40px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(5px);
+      /* Animation */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInCard 1s forwards ease-out;
     }
+
+    @keyframes fadeInCard {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     h1 {
-      color: #d63384;
-      font-size: 2.5rem;
+      font-family: 'Great Vibes', cursive;
+      color: var(--theme-color-1);
+      font-size: 4rem;
+      margin: 0 0 10px;
+      font-weight: normal;
+      animation: fadeInDown 1.2s forwards ease-out;
+      opacity: 0;
     }
+
     h2 {
+      font-size: 1.5rem;
       margin-top: 20px;
-      color: #444;
+      color: var(--text-color-1);
+      font-weight: 300;
+      animation: fadeInDown 1.4s forwards ease-out;
+      opacity: 0;
     }
+
     .names {
-      font-size: 1.8rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #333;
       margin: 20px 0;
+      animation: fadeInDown 1.6s forwards ease-out;
+      opacity: 0;
     }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+    
+    .details p {
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 25px;
+        font-size: 1.1rem;
+    }
+
+    .details b {
+        font-weight: 400;
+        color: var(--text-color-1);
+        display: block;
+        margin-top: 5px;
+    }
+
     .countdown {
-      font-size: 1.4rem;
-      margin: 20px 0;
-      color: #e63946;
+      font-size: 1.5rem;
+      margin: 30px 0;
+      color: var(--theme-color-1);
+      font-weight: 700;
+      background: rgba(0,0,0,0.02);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px dashed rgba(0,0,0,0.1);
     }
+
+    .btn-container {
+      margin-top: 30px;
+    }
+
     .btn {
       display: inline-block;
-      padding: 12px 20px;
-      margin: 15px;
-      border-radius: 10px;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 50px;
       text-decoration: none;
       color: white;
-      background: #d63384;
-      transition: 0.3s;
+      background: var(--theme-color-1);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border: none;
+      font-weight: 700;
     }
+
     .btn:hover {
-      background: #ad2968;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     }
+    
+    .divider {
+        width: 80px;
+        height: 1px;
+        background: #ddd;
+        margin: 30px auto;
+    }
+
+    /* Animation Delays */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    #invitee { animation-delay: 0.2s; }
+    .names { animation-delay: 0.4s; }
+    
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>💍 Wedding Invitation 💍</h1>
+    <h1>You're Invited</h1>
     <h2 id="invitee"></h2>
-    <p>You are warmly invited to celebrate the wedding of</p>
-    <div class="names">👩 KAVI & 👨 SAMITHA</div>
-    <p>Date: <b>25th October 2025</b></p>
-    <p>Venue: <b>Grand Royal Hall, Colombo</b></p>
+    <p>With great joy, we invite you to celebrate the wedding of</p>
+    <div class="names">👩 Bride Name &amp; 👨 Groom Name</div>
+    
+    <div class="divider"></div>
 
-    <div class="countdown" id="countdown"></div>
+    <div class="details">
+        <p>Date:<b>Saturday, 25th October 2025</b></p>
+        <p>Venue:<b>Grand Royal Hall, Colombo</b></p>
+    </div>
 
-    <a href="https://maps.google.com/?q=Grand+Royal+Hall+Colombo" target="_blank" class="btn">📍 View Location</a>
-    <a href="https://wa.me/94770576860?text=I%20will%20attend%20the%20wedding" target="_blank" class="btn">✅ RSVP via WhatsApp</a>
+    <div class="countdown" id="countdown">Loading...</div>
+
+    <div class="btn-container">
+      <a href="https://maps.google.com/?q=Grand+Royal+Hall+Colombo" target="_blank" class="btn">📍 View Location</a>
+      <a href="https://wa.me/94770576860?text=I%20will%20be%20delighted%20to%20attend!" target="_blank" class="btn">✅ RSVP via WhatsApp</a>
+    </div>
   </div>
 
   <script>
     // Get URL parameters
     const params = new URLSearchParams(window.location.search);
-    const invitee = params.get("invitee") || "Dear Guest";
+    const invitee = params.get("invitee") || "Our Dearest Guest";
     const theme = params.get("theme") || 1;
 
     // Update invitee name
-    document.getElementById("invitee").innerText = `Dear ${invitee},`;
+    document.getElementById("invitee").innerText = `${invitee},`;
 
     // Change theme color
     if (theme == 2) {
-      document.body.style.background = "#f0fff4"; 
-      document.querySelector("h1").style.color = "#2f855a";
-      document.querySelectorAll(".btn").forEach(btn => btn.style.background = "#2f855a");
+      document.documentElement.style.setProperty('--theme-color-1', 'var(--theme-color-2)');
+      document.documentElement.style.setProperty('--text-color-1', 'var(--text-color-2)');
+      document.documentElement.style.setProperty('--bg-color-1', 'var(--bg-color-2)');
     }
 
     // Countdown timer
@@ -92,7 +203,8 @@
       const distance = weddingDate - now;
 
       if (distance < 0) {
-        countdownEl.innerText = "🎉 The wedding has started!";
+        countdownEl.innerHTML = "🎉 The celebration has begun! 🎉";
+        clearInterval(timerInterval); // Stop the timer
         return;
       }
 
@@ -101,10 +213,12 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdownEl.innerText = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
+      countdownEl.innerText = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    setInterval(updateCountdown, 1000);
+    // Run the function immediately and then set an interval
+    updateCountdown();
+    const timerInterval = setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
