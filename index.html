@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding Invitation</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      text-align: center;
+      background: #fff0f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .card {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 40px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #d63384;
+      font-size: 2.5rem;
+    }
+    h2 {
+      margin-top: 20px;
+      color: #444;
+    }
+    .names {
+      font-size: 1.8rem;
+      margin: 20px 0;
+    }
+    .countdown {
+      font-size: 1.4rem;
+      margin: 20px 0;
+      color: #e63946;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      background: #d63384;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #ad2968;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💍 Wedding Invitation 💍</h1>
+    <h2 id="invitee"></h2>
+    <p>You are warmly invited to celebrate the wedding of</p>
+    <div class="names">👩 Bride Name & 👨 Groom Name</div>
+    <p>Date: <b>25th October 2025</b></p>
+    <p>Venue: <b>Grand Royal Hall, Colombo</b></p>
+
+    <div class="countdown" id="countdown"></div>
+
+    <a href="https://maps.google.com/?q=Grand+Royal+Hall+Colombo" target="_blank" class="btn">📍 View Location</a>
+    <a href="https://wa.me/94770576860?text=I%20will%20attend%20the%20wedding" target="_blank" class="btn">✅ RSVP via WhatsApp</a>
+  </div>
+
+  <script>
+    // Get URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const invitee = params.get("invitee") || "Dear Guest";
+    const theme = params.get("theme") || 1;
+
+    // Update invitee name
+    document.getElementById("invitee").innerText = `Dear ${invitee},`;
+
+    // Change theme color
+    if (theme == 2) {
+      document.body.style.background = "#f0fff4"; 
+      document.querySelector("h1").style.color = "#2f855a";
+      document.querySelectorAll(".btn").forEach(btn => btn.style.background = "#2f855a");
+    }
+
+    // Countdown timer
+    const weddingDate = new Date("Oct 25, 2025 10:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        countdownEl.innerText = "🎉 The wedding has started!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerText = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
