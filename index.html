@@ -1,179 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kavi & Samitha | Wedding Invitation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kavi & Samitha | Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* Global */
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: 'Poppins', sans-serif; color:#444; overflow-x:hidden; }
+a { text-decoration:none; }
 
-  <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #444;
-      text-align: center;
-      background-color: #fff;
-      background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-    }
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  display:flex; justify-content:center; align-items:center;
+}
+.hero::after {
+  content:'';
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  background: rgba(255,255,255,0.5); z-index:1;
+}
+.hero-content {
+  position: relative; z-index:2; text-align:center;
+  animation: fadeIn 2s ease forwards;
+}
+.hero-content h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size:4rem; color:#c59d5f; margin-bottom:10px;
+  opacity:0; animation: fadeUp 2s forwards;
+}
+.hero-content h2 {
+  font-size:1.5rem; margin-bottom:20px; opacity:0; animation: fadeUp 2s 0.5s forwards;
+}
+.hero-content .names {
+  font-family: 'Great Vibes', cursive; font-size:3rem; color:#333; margin-bottom:20px; opacity:0; animation: fadeUp 2s 1s forwards;
+}
+.countdown {
+  margin-top:20px; font-size:1.3rem; color:#c59d5f; font-weight:600;
+  background: rgba(255,255,255,0.7); padding:10px 20px; border-radius:50px;
+  display:inline-block; opacity:0; animation: fadeUp 2s 1.5s forwards;
+}
 
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.9);
-      min-height: 100vh;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 1.5s ease-out;
-    }
+/* Sections */
+section {
+  min-height:100vh;
+  padding:80px 20px;
+  display:flex; flex-direction:column; align-items:center;
+  opacity:0; transform: translateY(50px); transition: all 0.8s ease-out;
+}
+section.active { opacity:1; transform: translateY(0); }
 
-    h1 { font-family: 'Great Vibes', cursive; font-size: 3.8rem; color: #c59d5f; margin-bottom: 10px; }
-    h2 { font-size: 1.3rem; font-weight: 300; margin-bottom: 30px; }
-    .names { font-family: 'Great Vibes', cursive; font-size: 3rem; color: #333; margin: 20px 0; }
-    .divider { width: 80px; height: 2px; background-color: #c59d5f; margin: 20px auto; }
-    .date, .venue { font-size: 1.1rem; margin: 10px 0; font-weight: 500; }
-    .countdown { margin: 25px 0; font-size: 1.3rem; color: #c59d5f; font-weight: 600; background: rgba(255,255,255,0.7); padding: 10px 20px; border-radius: 50px; display: inline-block; }
-    .btn-container { margin-top: 25px; }
-    .btn { display: inline-block; padding: 12px 25px; background-color: #c59d5f; color: white; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; margin: 5px; }
-    .btn:hover { background-color: #b48b4d; transform: translateY(-3px); }
+/* Timeline */
+.timeline { max-width:700px; width:100%; margin-top:40px; }
+.timeline-item { position:relative; padding-left:50px; margin-bottom:40px; }
+.timeline-item::before {
+  content:''; position:absolute; left:0; top:5px; width:20px; height:20px; background:#c59d5f; border-radius:50%;
+}
+.timeline-item::after {
+  content:''; position:absolute; left:9px; top:30px; width:2px; height:calc(100% - 30px); background:#c59d5f;
+}
+.timeline-item:last-child::after { display:none; }
+.timeline-item h3 { font-size:1.1rem; color:#333; margin-bottom:5px; }
+.timeline-item p { font-size:0.95rem; color:#666; }
 
-    /* Couple Section */
-    .photo-section { background-color: #fff; padding: 60px 20px; }
-    .photo-container { position: relative; max-width: 350px; margin: 0 auto 25px; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15); animation: fadeIn 1.5s ease-out; }
-    .photo-container img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
-    .photo-container:hover img { transform: scale(1.05); }
-    .quote { font-style: italic; font-size: 1.1rem; color: #666; max-width: 500px; margin: 0 auto 40px; }
+/* Gallery */
+.gallery {
+  display:flex; overflow-x:auto; gap:20px; padding:20px;
+}
+.gallery img { border-radius:20px; width:300px; flex-shrink:0; transition: transform 0.3s; }
+.gallery img:hover { transform: scale(1.05); }
 
-    /* Timeline Section */
-    .timeline { max-width: 600px; margin: 0 auto 60px; text-align: left; }
-    .timeline-item { position: relative; padding-left: 40px; margin-bottom: 30px; }
-    .timeline-item::before { content: ''; position: absolute; left: 0; top: 5px; width: 20px; height: 20px; background-color: #c59d5f; border-radius: 50%; }
-    .timeline-item::after { content: ''; position: absolute; left: 9px; top: 30px; width: 2px; height: calc(100% - 30px); background-color: #c59d5f; }
-    .timeline-item:last-child::after { display: none; }
-    .timeline-item h3 { margin-bottom: 5px; font-size: 1.1rem; color: #333; }
-    .timeline-item p { font-size: 0.95rem; color: #666; margin: 0; }
+/* Gift & RSVP */
+.gift-section {
+  background:#fdf6f0; border-radius:20px; padding:60px 20px; max-width:600px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1); text-align:center;
+}
+.gift-section h3 { font-family: 'Great Vibes', cursive; color:#c59d5f; font-size:2rem; margin-bottom:20px; }
+.gift-btn { display:inline-block; padding:12px 25px; background:#c59d5f; color:white; border-radius:30px; font-weight:600; margin-top:10px; transition:0.3s; }
+.gift-btn:hover { background:#b48b4d; transform: translateY(-3px); }
 
-    /* Gift & Message Section */
-    .gift-section { background: #fdf6f0; padding: 60px 20px; border-radius: 20px; max-width: 600px; margin: 0 auto 60px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
-    .gift-section h3 { color: #c59d5f; font-family: 'Great Vibes', cursive; font-size: 2rem; margin-bottom: 20px; }
-    .gift-section p { font-size: 1rem; color: #555; margin-bottom: 15px; }
-    .gift-btn { display: inline-block; padding: 12px 25px; background-color: #c59d5f; color: white; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; margin-top: 10px; }
-    .gift-btn:hover { background-color: #b48b4d; transform: translateY(-3px); }
+/* Animations */
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes fadeUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
 
-    footer { margin-top: 50px; font-size: 0.9rem; color: #777; }
-    audio { display: none; }
+footer { margin:50px 0 20px; font-size:0.9rem; color:#777; }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2.5rem; }
-      .names { font-size: 2rem; }
-      .timeline { padding-left: 10px; }
-      .timeline-item { padding-left: 30px; }
-      .timeline-item::before { left: -5px; }
-      .timeline-item::after { left: 4px; }
-    }
-  </style>
+/* Scrollbar Fix */
+::-webkit-scrollbar { display:none; }
+</style>
 </head>
-
 <body>
-  <!-- Background music -->
-  <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-  </audio>
 
-  <!-- Main Invitation Card -->
-  <div class="overlay">
+<!-- Background music -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-content">
     <h1>You're Invited</h1>
     <h2>To celebrate the wedding of</h2>
     <div class="names">👩 Kavi & 👨 Samitha</div>
-
-    <div class="divider"></div>
-
-    <div class="date">📅 Saturday, 25th October 2025</div>
-    <div class="venue">📍 Grand Royal Hall, Colombo</div>
-
     <div class="countdown" id="countdown">Loading...</div>
+  </div>
+</div>
 
-    <div class="btn-container">
-      <a href="https://maps.google.com/?q=Grand+Royal+Hall+Colombo" class="btn" target="_blank">View Location</a>
-      <a href="https://wa.me/94770576860?text=I%20will%20be%20delighted%20to%20attend!" class="btn" target="_blank">RSVP</a>
+<!-- Timeline Section -->
+<section class="timeline-section">
+  <h2 style="color:#c59d5f; font-family: 'Great Vibes', cursive; font-size:2rem; margin-bottom:30px;">Wedding Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>10:00 AM - Ceremony</h3>
+      <p>The wedding ceremony begins at the Grand Royal Hall.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>12:00 PM - Lunch Reception</h3>
+      <p>Join us for a delicious lunch and celebration.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>2:00 PM - Photo & Fun</h3>
+      <p>Capture memories with the couple and friends.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>5:00 PM - Dance & Party</h3>
+      <p>Enjoy music, dancing, and celebrations.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>8:00 PM - Send-off</h3>
+      <p>Wave goodbye as we start our new journey together.</p>
     </div>
   </div>
+</section>
 
-  <!-- Couple Photo Section -->
-  <section class="photo-section">
-    <div class="photo-container">
-      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80" alt="Couple Photo">
-    </div>
-    <p class="quote">“Two hearts, one love, endless happiness.” 💕</p>
+<!-- Gallery Section -->
+<section class="gallery-section">
+  <h2 style="color:#c59d5f; font-family: 'Great Vibes', cursive; font-size:2rem; margin-bottom:30px;">Our Memories 💕</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80" alt="Photo1">
+    <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=600&q=80" alt="Photo2">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Photo3">
+    <img src="https://images.unsplash.com/photo-1533106418985-8846e9a5745b?auto=format&fit=crop&w=600&q=80" alt="Photo4">
+  </div>
+</section>
 
-    <!-- Wedding Timeline -->
-    <div class="timeline">
-      <div class="timeline-item">
-        <h3>10:00 AM - Ceremony</h3>
-        <p>The wedding ceremony begins at the Grand Royal Hall.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>12:00 PM - Lunch Reception</h3>
-        <p>Join us for a delicious lunch and celebration.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>2:00 PM - Photo & Fun</h3>
-        <p>Capture memories with the couple and friends.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>5:00 PM - Dance & Party</h3>
-        <p>Enjoy music, dancing, and celebrations.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>8:00 PM - Send-off</h3>
-        <p>Wave goodbye as we start our new journey together.</p>
-      </div>
-    </div>
+<!-- Gift & RSVP Section -->
+<section class="gift-section">
+  <h3>Send a Gift or Message 💌</h3>
+  <p>If you would like to send a gift, you can deposit it here:</p>
+  <p><b>Bank: Sampath Bank</b><br>Account No: 1092 5247 7856</p>
+  <p>Or send a personal message via WhatsApp:</p>
+  <a href="https://wa.me/94770576860?text=Hello%20Kavi%20%26%20Samitha!%20Congratulations!" class="gift-btn" target="_blank">Send Message</a>
+</section>
 
-    <!-- Gift & Message Section -->
-    <div class="gift-section">
-      <h3>Send a Gift or Message 💌</h3>
-      <p>If you would like to send a gift, you can deposit it here:</p>
-      <p><b>Bank: Sampath Bank</b><br>Account No: 1092 5247 7856</p>
-      <p>Or send a personal message to us via WhatsApp:</p>
-      <a href="https://wa.me/94770576860?text=Hello%20Kavi%20%26%20Samitha!%20Congratulations!" class="gift-btn" target="_blank">Send Message</a>
-    </div>
-  </section>
+<footer>With love, Kavi & Samitha 💍</footer>
 
-  <footer>With love, Kavi & Samitha 💍</footer>
+<script>
+// Countdown Timer
+const weddingDate = new Date("Oct 25, 2025 10:00:00").getTime();
+const countdownEl = document.getElementById("countdown");
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+  if(distance<0){ countdownEl.innerHTML="🎉 The celebration has begun!"; return; }
+  const days = Math.floor(distance/(1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+  const seconds = Math.floor((distance % (1000*60))/1000);
+  countdownEl.innerHTML=`⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
 
-  <script>
-    // Countdown Timer
-    const weddingDate = new Date("Oct 25, 2025 10:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-
-      if (distance < 0) {
-        countdownEl.innerHTML = "🎉 The celebration has begun!";
-        clearInterval(timer);
-        return;
-      }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownEl.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-  </script>
+// Scroll animation
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll',()=>{ sections.forEach(sec=>{ 
+  const top = sec.getBoundingClientRect().top;
+  if(top < window.innerHeight - 100){ sec.classList.add('active'); } 
+});});
+</script>
 </body>
 </html>
